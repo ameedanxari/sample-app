@@ -1,0 +1,119 @@
+//
+//	TribeNTribeMember.swift
+//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+
+import Foundation
+
+
+class TribeNTribeMember : NSObject, NSCoding{
+
+	var v : Int!
+	var id : String!
+	var active : Bool!
+	var added : String!
+	var addedBy : TribeNTribeMemberDetail!
+	var createdAt : String!
+	var status : String!
+	var updatedAt : String!
+
+
+	/**
+	 * Instantiate the instance using the passed dictionary values to set the properties values
+	 */
+	init(fromDictionary dictionary: [String:Any]){
+		v = dictionary["__v"] as? Int
+		id = dictionary["_id"] as? String
+		active = dictionary["active"] as? Bool
+		added = dictionary["added"] as? String
+		if let addedByData = dictionary["added_by"] as? [String:Any]{
+			addedBy = TribeNTribeMemberDetail(fromDictionary: addedByData)
+		}
+		createdAt = dictionary["created_at"] as? String
+		status = dictionary["status"] as? String
+		updatedAt = dictionary["updated_at"] as? String
+	}
+
+	/**
+	 * Returns all the available property values in the form of [String:Any] object where the key is the approperiate json key and the value is the value of the corresponding property
+	 */
+	func toDictionary() -> [String:Any]
+	{
+		var dictionary = [String:Any]()
+		if v != nil{
+			dictionary["__v"] = v
+		}
+		if id != nil{
+			dictionary["_id"] = id
+		}
+		if active != nil{
+			dictionary["active"] = active
+		}
+		if added != nil{
+			dictionary["added"] = added
+		}
+		if addedBy != nil{
+			dictionary["added_by"] = addedBy.toDictionary()
+		}
+		if createdAt != nil{
+			dictionary["created_at"] = createdAt
+		}
+		if status != nil{
+			dictionary["status"] = status
+		}
+		if updatedAt != nil{
+			dictionary["updated_at"] = updatedAt
+		}
+		return dictionary
+	}
+
+    /**
+    * NSCoding required initializer.
+    * Fills the data from the passed decoder
+    */
+    @objc required init(coder aDecoder: NSCoder)
+	{
+         v = aDecoder.decodeObject(forKey: "__v") as? Int
+         id = aDecoder.decodeObject(forKey: "_id") as? String
+         active = aDecoder.decodeObject(forKey: "active") as? Bool
+         added = aDecoder.decodeObject(forKey: "added") as? String
+         addedBy = aDecoder.decodeObject(forKey: "added_by") as? TribeNTribeMemberDetail
+         createdAt = aDecoder.decodeObject(forKey: "created_at") as? String
+         status = aDecoder.decodeObject(forKey: "status") as? String
+         updatedAt = aDecoder.decodeObject(forKey: "updated_at") as? String
+
+	}
+
+    /**
+    * NSCoding required method.
+    * Encodes mode properties into the decoder
+    */
+    @objc func encode(with aCoder: NSCoder)
+	{
+		if v != nil{
+			aCoder.encode(v, forKey: "__v")
+		}
+		if id != nil{
+			aCoder.encode(id, forKey: "_id")
+		}
+		if active != nil{
+			aCoder.encode(active, forKey: "active")
+		}
+		if added != nil{
+			aCoder.encode(added, forKey: "added")
+		}
+		if addedBy != nil{
+			aCoder.encode(addedBy, forKey: "added_by")
+		}
+		if createdAt != nil{
+			aCoder.encode(createdAt, forKey: "created_at")
+		}
+		if status != nil{
+			aCoder.encode(status, forKey: "status")
+		}
+		if updatedAt != nil{
+			aCoder.encode(updatedAt, forKey: "updated_at")
+		}
+
+	}
+
+}
